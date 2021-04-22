@@ -1,0 +1,6 @@
+framework module Pods_GLTFMac_Example {
+  umbrella header "Pods-GLTFMac_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  GLTFMac
 //
-//  Created by studio61315@gmail.com on 04/22/2021.
-//  Copyright (c) 2021 studio61315@gmail.com. All rights reserved.
+//  Created by Minseo Park on 04/22/2021.
+//  Copyright (c) 2021 Minseo Park. All rights reserved.
 //
 
 import UIKit

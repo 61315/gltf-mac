@@ -1,0 +1,6 @@
+framework module GLTFMac {
+  umbrella header "GLTFMac-umbrella.h"
+
+  export *
+  module * { export * }
+}
