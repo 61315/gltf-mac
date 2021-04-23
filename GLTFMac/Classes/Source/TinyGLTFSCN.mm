@@ -545,9 +545,11 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& metallicRoughnessTexture = model.textures[material.pbrMetallicRoughness.metallicRoughnessTexture.index];
         
         if (metallicRoughnessTexture.source != -1) {
-            scnMaterial.metalness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelBlue fromModel:model];
+            scnMaterial.metalness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.metalness.textureComponents = SCNColorMaskBlue;
             
-            scnMaterial.roughness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelGreen fromModel:model];
+            scnMaterial.roughness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.roughness.textureComponents = SCNColorMaskGreen;
         }
         
         if (metallicRoughnessTexture.sampler != -1) {
@@ -592,7 +594,8 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& occlusionTexture = model.textures[material.occlusionTexture.index];
         
         if (occlusionTexture.source != -1) {
-            scnMaterial.ambientOcclusion.contents = (__bridge id)[self cgImageForTinyImage:occlusionTexture.source channelMask:TinyImageChannel::TinyImageChannelRed fromModel:model];
+            scnMaterial.ambientOcclusion.contents = (__bridge id)[self cgImageForTinyImage:occlusionTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.ambientOcclusion.textureComponents = SCNColorMaskRed;
         }
         
         if (occlusionTexture.sampler != -1) {
