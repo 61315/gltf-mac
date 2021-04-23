@@ -61,6 +61,9 @@ There are some other cool run-out-of-box libraries that you should definitely ch
 
 ## Third Party Licenses
 
+- Battle Damaged Sci-fi Helmet - PBR by [theblueturtle_](https://sketchfab.com/theblueturtle_), CC BY-NC
+- [entrance_hall_1k_blurred.png](https://hdrihaven.com/hdri/?h=entrance_hall) by Sergej Majboroda, CC0 Public Domain 
+
 - [syoyo/tinygltf](https://github.com/syoyo/tinygltf) MIT License
 - [nothings/stb  stb_image.h](https://github.com/nothings/stb) Public Domain
 - [nlohmann/json](https://github.com/nlohmann/json)  MIT License

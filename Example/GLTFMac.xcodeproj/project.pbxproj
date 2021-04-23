@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		B50C1D5E263180EA00883C89 /* DamagedHelmet.glb in Resources */ = {isa = PBXBuildFile; fileRef = B50C1D5D263180EA00883C89 /* DamagedHelmet.glb */; };
+		B570E8B82632D7D200CC43C8 /* entrance_hall_1k_blurred.png in Resources */ = {isa = PBXBuildFile; fileRef = B570E8B72632D7D200CC43C8 /* entrance_hall_1k_blurred.png */; };
 		BA596E7F358C2FD7D9B5476C /* Pods_GLTFMac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F87919E8241398BD9A4B6D9 /* Pods_GLTFMac_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		9786883AB8E8B7467CB599EA /* Pods-GLTFMac_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLTFMac_Example.debug.xcconfig"; path = "Target Support Files/Pods-GLTFMac_Example/Pods-GLTFMac_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B50C1D5D263180EA00883C89 /* DamagedHelmet.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = DamagedHelmet.glb; sourceTree = "<group>"; };
+		B570E8B72632D7D200CC43C8 /* entrance_hall_1k_blurred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entrance_hall_1k_blurred.png; sourceTree = "<group>"; };
 		C5B03068217D20D626A828A8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				B50C1D5D263180EA00883C89 /* DamagedHelmet.glb */,
+				B570E8B72632D7D200CC43C8 /* entrance_hall_1k_blurred.png */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				B570E8B82632D7D200CC43C8 /* entrance_hall_1k_blurred.png in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				B50C1D5E263180EA00883C89 /* DamagedHelmet.glb in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
