@@ -26,6 +26,9 @@ class ViewController: UIViewController {
 
         // Assign default scene
         let scene = SCNScene()
+        scene.lightingEnvironment.contents = UIImage(named: "entrance_hall_1k_blurred.png")
+        scene.lightingEnvironment.intensity = 2.0
+        //scene.background.contents = UIImage(named: "entrance_hall_1k_blurred.png")
         sceneView.scene = scene
         
         // Create loader instance
