@@ -11,6 +11,14 @@ A library for loading glTF 2.0 assets into iOS runtime.
 
 **gltf-mac** is actively underdevelopment thus being not production-ready.
 
+## Showcase
+
+![showcase](https://user-images.githubusercontent.com/46559594/115954410-e0e1c000-a52b-11eb-883f-4d1b2b97b936.gif)
+
+Here is one of my favorite DSLR lenses, **Canon EF 24-70mm f/2.8L II USM**, only in 3D! 🥳
+
+> Published by [Andrea Spognetta](https://sketchfab.com/3d-models/canon-ef-24-70mm-f28l-ii-usm-rawscan-b7a79b2967514a4bb61cd3b4aa989948), CC Attribution-NonCommercial
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -59,10 +67,12 @@ There are some other cool run-out-of-box libraries that you should definitely ch
 - [SVRF/SvrfGLTFSceneKit](https://github.com/SVRF/SvrfGLTFSceneKit)
 - [3D4Medical/glTFSceneKit](https://github.com/3D4Medical/glTFSceneKit)
 
-## Third Party Licenses
+## Assets
 
-- Battle Damaged Sci-fi Helmet - PBR by [theblueturtle_](https://sketchfab.com/theblueturtle_), CC BY-NC
-- [entrance_hall_1k_blurred.png](https://hdrihaven.com/hdri/?h=entrance_hall) by Sergej Majboroda, CC0 Public Domain 
+- `DamagedHelmet.glb` by [theblueturtle_](https://sketchfab.com/theblueturtle_), CC BY-NC
+- `entrance_hall_1k_blurred.png` by [Sergej Majboroda](https://hdrihaven.com/hdri/?h=entrance_hall), CC0 Public Domain 
+
+## Third Party Licenses
 
 - [syoyo/tinygltf](https://github.com/syoyo/tinygltf) MIT License
 - [nothings/stb  stb_image.h](https://github.com/nothings/stb) Public Domain
