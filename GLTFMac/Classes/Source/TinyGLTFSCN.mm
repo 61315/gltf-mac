@@ -69,15 +69,6 @@ const std::string  GLTFAttributeSemanticWeights1  = "WEIGHTS_1";
 const std::string  GLTFAttributeSemanticRoughness = "ROUGHNESS";
 const std::string  GLTFAttributeSemanticMetallic  = "METALLIC";
 
-typedef NS_ENUM(NSInteger, TinyImageChannel) {
-    TinyImageChannelRed,
-    TinyImageChannelGreen,
-    TinyImageChannelBlue,
-    TinyImageChannelAlpha,
-    TinyImageChannelAll = 255
-};
-
-
 typedef NS_ENUM(NSInteger, GLTF_TYPE) {
     GLTF_TYPE_GLTF,
     GLTF_TYPE_GLB
@@ -207,7 +198,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
 @interface TinyGLTFSCN ()
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, SCNNode *> *scnNodesForTinyNodes;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<NSValue *> *> *inverseBindMatricesForSkins;
-@property (nonatomic, strong) NSMutableDictionary<NSString *, id> *cgImagesForImagesAndChannels;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, id> *cgImagesForImages;
 @property (nonatomic, assign) NSInteger namelessAnimationIndex;
 @property (nonatomic, strong) NSURL *gltfPath;
 @end
@@ -222,7 +213,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
 - (BOOL) loadModel: (NSURL *) modelURL {
     self.scnNodesForTinyNodes = [NSMutableDictionary dictionary];
     self.inverseBindMatricesForSkins = [NSMutableDictionary dictionary];
-    self.cgImagesForImagesAndChannels = [NSMutableDictionary dictionary];
+    self.cgImagesForImages = [NSMutableDictionary dictionary];
     self.namelessAnimationIndex = 0;
     self.gltfPath = [modelURL URLByDeletingLastPathComponent];
     
@@ -521,7 +512,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& baseColorTexture = model.textures[material.pbrMetallicRoughness.baseColorTexture.index];
         
         if (baseColorTexture.source != -1) {
-            scnMaterial.diffuse.contents = (__bridge id)[self cgImageForTinyImage:baseColorTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.diffuse.contents = (__bridge id)[self cgImageForTinyImage:baseColorTexture.source fromModel:model];
         }
         
         if (baseColorTexture.sampler != -1) {
@@ -545,10 +536,10 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& metallicRoughnessTexture = model.textures[material.pbrMetallicRoughness.metallicRoughnessTexture.index];
         
         if (metallicRoughnessTexture.source != -1) {
-            scnMaterial.metalness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.metalness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source fromModel:model];
             scnMaterial.metalness.textureComponents = SCNColorMaskBlue;
             
-            scnMaterial.roughness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.roughness.contents = (__bridge id)[self cgImageForTinyImage:metallicRoughnessTexture.source fromModel:model];
             scnMaterial.roughness.textureComponents = SCNColorMaskGreen;
         }
         
@@ -578,7 +569,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& normalTexture = model.textures[material.normalTexture.index];
         
         if (normalTexture.source != -1) {
-            scnMaterial.normal.contents = (__bridge id)[self cgImageForTinyImage:normalTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.normal.contents = (__bridge id)[self cgImageForTinyImage:normalTexture.source fromModel:model];
         }
         
         if (normalTexture.sampler != -1) {
@@ -594,7 +585,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& occlusionTexture = model.textures[material.occlusionTexture.index];
         
         if (occlusionTexture.source != -1) {
-            scnMaterial.ambientOcclusion.contents = (__bridge id)[self cgImageForTinyImage:occlusionTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.ambientOcclusion.contents = (__bridge id)[self cgImageForTinyImage:occlusionTexture.source fromModel:model];
             scnMaterial.ambientOcclusion.textureComponents = SCNColorMaskRed;
         }
         
@@ -611,7 +602,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         const auto& emissiveTexture = model.textures[material.emissiveTexture.index];
         
         if (emissiveTexture.source != -1) {
-            scnMaterial.emission.contents = (__bridge id)[self cgImageForTinyImage:emissiveTexture.source channelMask:TinyImageChannel::TinyImageChannelAll fromModel:model];
+            scnMaterial.emission.contents = (__bridge id)[self cgImageForTinyImage:emissiveTexture.source fromModel:model];
         }
         
         if (emissiveTexture.sampler != -1) {
@@ -634,48 +625,7 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
     return scnMaterial;
 }
 
-- (CGImageRef)newCGImageByExtractingChannel:(NSInteger)channelIndex fromCGImage:(const tinygltf::Image *)sourceImage {
-    if (sourceImage == NULL) {
-        return NULL;
-    }
-    
-    NSData *imageData = [[NSData alloc] initWithBytes:sourceImage->image.data() length:sourceImage->image.size()];
-    
-    CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef) imageData);
-    CGImageRef imageRef = CGImageCreateWithJPEGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
-    
-    size_t width = sourceImage->width;
-    size_t height = sourceImage->height;
-    size_t bpc = 8;
-    size_t Bpr = width * 4;
-    
-    uint8_t *pixels = (uint8_t *)malloc(Bpr * height);
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-    CGContextRef context = CGBitmapContextCreate(pixels, width, height, bpc, Bpr, colorSpace, kCGImageAlphaPremultipliedLast);
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
-    
-    for (int i = 0; i < width * height; ++i) {
-        uint8_t components[4] = { pixels[i * 4 + 0], pixels[i * 4 + 1], pixels[i * 4 + 2], pixels[i * 4 + 3] }; // RGBA
-        pixels[i] = components[channelIndex];
-    }
-    
-    CGColorSpaceRef monoColorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericGrayGamma2_2);
-    CGContextRef monoContext = CGBitmapContextCreate(pixels, width, height, bpc, width, monoColorSpace, kCGImageAlphaNone);
-    
-    CGImageRef channelImage = CGBitmapContextCreateImage(monoContext);
-    
-    CGColorSpaceRelease(monoColorSpace);
-    CGContextRelease(monoContext);
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-    free(pixels);
-    //    CGImageRelease(imageRef);
-    
-    return channelImage;
-}
-
-- (CGImage *)cgImageForTinyImage:(NSInteger)imageID channelMask:(TinyImageChannel)channelMask fromModel:(const tinygltf::Model &)model {
+- (CGImage *)cgImageForTinyImage:(NSInteger)imageID fromModel:(const tinygltf::Model &)model {
     if (imageID == -1) {
         return nil;
     }
@@ -689,17 +639,8 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
         imageName = [NSString stringWithFormat:@"%s", image.name.c_str()];
     }
     
-    NSString *maskedIdentifier = [NSString stringWithFormat:@"%@/%d", imageName, (int)channelMask];
-    
-    // Check the cache to see if we already have an exact match for the requested image and channel subset
-    CGImageRef exactCachedImage = (__bridge CGImageRef)self.cgImagesForImagesAndChannels[maskedIdentifier];
-    if (exactCachedImage != nil) {
-        return exactCachedImage;
-    }
-    
-    // If we don't have an exact match for the image+channel pair, we may still have the original image cached
-    NSString *unmaskedIdentifier = [NSString stringWithFormat:@"%@/%d", imageName, (int)TinyImageChannel::TinyImageChannelAll];
-    CGImageRef originalImage = (__bridge CGImageRef)self.cgImagesForImagesAndChannels[unmaskedIdentifier];
+    NSString *originalIdentifier = [NSString stringWithFormat:@"%ld/%@", (long)imageID, imageName];
+    CGImageRef originalImage = (__bridge CGImageRef)self.cgImagesForImages[originalIdentifier];
     
     if (originalImage == NULL) {
         // We got unlucky, so we need to load and cache the original
@@ -724,16 +665,8 @@ NSInteger TinyGLTFComponentCountForDimension(NSInteger dimension) {
             }
         }
         
-        self.cgImagesForImagesAndChannels[unmaskedIdentifier] = (__bridge id)originalImage;
+        self.cgImagesForImages[originalIdentifier] = (__bridge id)originalImage;
         CGImageRelease(originalImage);
-    }
-    
-    // Now that we have the original, we may need to extract the requisite channel and cache the result
-    if (channelMask != TinyImageChannel::TinyImageChannelAll) {
-        CGImageRef extractedImage = [self newCGImageByExtractingChannel:(int)channelMask fromCGImage:&image];
-        self.cgImagesForImagesAndChannels[maskedIdentifier] = (__bridge id)extractedImage;
-        CGImageRelease(extractedImage);
-        return extractedImage;
     }
     
     return originalImage;
