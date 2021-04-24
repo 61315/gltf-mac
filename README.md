@@ -1,6 +1,6 @@
 # gltf-mac
 
-[![CI Status](https://img.shields.io/travis/61315/GLTFMac.svg?style=flat)](https://travis-ci.org/61315/GLTFMac)
+[![CI Status](https://img.shields.io/travis/61315/gltf-mac.svg?style=flat)](https://travis-ci.org/61315/gltf-mac)
 [![Version](https://img.shields.io/cocoapods/v/GLTFMac.svg?style=flat)](https://cocoapods.org/pods/GLTFMac)
 [![License](https://img.shields.io/cocoapods/l/GLTFMac.svg?style=flat)](https://cocoapods.org/pods/GLTFMac)
 [![Platform](https://img.shields.io/cocoapods/p/GLTFMac.svg?style=flat)](https://cocoapods.org/pods/GLTFMac)
