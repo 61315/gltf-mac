@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GLTFMac'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A library for loading glTF 2.0 assets into iOS runtime.'
   s.homepage         = 'https://github.com/61315/gltf-mac'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -13,6 +13,9 @@ Pod::Spec.new do |s|
   s.private_header_files  = 'GLTFMac/Classes/Headers/**/*.{h,hpp}'
   s.public_header_files   = 'GLTFMac/Classes/Source/**/*.{h,hpp}'
   s.vendored_library      = 'GLTFMac/Classes/Libraries/libdracodec.a'
+  s.header_mappings_dir   = 'GLTFMac'
+  s.pod_target_xcconfig   = { "HEADER_SEARCH_PATHS" => '"${PODS_ROOT}/../../GLTFMac/Classes/Headers"' }
   s.resource              = 'GLTFMac/NOTICES'
+  
   s.requires_arc          = true
 end
