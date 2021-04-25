@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.source_files          = 'GLTFMac/Classes/**/*'
   s.private_header_files  = 'GLTFMac/Classes/Headers/**/*.{h,hpp}'
   s.public_header_files   = 'GLTFMac/Classes/Source/**/*.{h,hpp}'
+  s.vendored_library      = 'GLTFMac/Classes/Libraries/libdracodec.a'
   s.resource              = 'GLTFMac/NOTICES'
   s.requires_arc          = true
 end

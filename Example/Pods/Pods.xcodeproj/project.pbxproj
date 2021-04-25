@@ -220,6 +220,7 @@
 		B5A2A7352634208E00154961 /* metadata_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A2A66B2634208E00154961 /* metadata_encoder.h */; };
 		B5A2A7362634208E00154961 /* metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A2A66C2634208E00154961 /* metadata.h */; };
 		B5A2A7372634208E00154961 /* metadata_decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A2A66D2634208E00154961 /* metadata_decoder.h */; };
+		B5CF596726352CF0002F4304 /* libdracodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CF596626352CF0002F4304 /* libdracodec.a */; };
 		C0365C9B7F7093AC8E4D42E2756A674C /* GLTFSCNAnimationTargetPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 455B538000B2F83948F8C81ED8C834D4 /* GLTFSCNAnimationTargetPair.m */; };
 		D0CA4A469093FE211917FA73C8FF89BD /* Pods-GLTFMac_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B84195A53F77082C5353A22AF6E7F9C1 /* Pods-GLTFMac_Tests-dummy.m */; };
 		DB10D7E521CB242DEBBFF6E6A0EE6734 /* Pods-GLTFMac_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E2DC0A6F18C061893B35A49B51F491C2 /* Pods-GLTFMac_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -480,6 +481,7 @@
 		B5A2A66B2634208E00154961 /* metadata_encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metadata_encoder.h; sourceTree = "<group>"; };
 		B5A2A66C2634208E00154961 /* metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metadata.h; sourceTree = "<group>"; };
 		B5A2A66D2634208E00154961 /* metadata_decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metadata_decoder.h; sourceTree = "<group>"; };
+		B5CF596626352CF0002F4304 /* libdracodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdracodec.a; sourceTree = "<group>"; };
 		B84195A53F77082C5353A22AF6E7F9C1 /* Pods-GLTFMac_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GLTFMac_Tests-dummy.m"; sourceTree = "<group>"; };
 		C6675D5FAD76350F077B245764C705CD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C8546BE66D4CFAD884BB94EBE7ACE37A /* TinyGLTFSCN.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = TinyGLTFSCN.mm; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CF596726352CF0002F4304 /* libdracodec.a in Frameworks */,
 				F274D035A19516097EE93FC632379443 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				3FB9DD98D9670D2BDECBC8C60254458E /* NOTICES */,
+				B5CF596526352CF0002F4304 /* Libraries */,
 				390B298014D6379F8A8A9B92A3B6970F /* Headers */,
 				51D486655F7F2E212CE5EB6D5E71AD8D /* Pod */,
 				B50773D481F08AC5430F3927C6254DB8 /* Source */,
@@ -1006,6 +1010,14 @@
 				B5A2A66D2634208E00154961 /* metadata_decoder.h */,
 			);
 			path = metadata;
+			sourceTree = "<group>";
+		};
+		B5CF596526352CF0002F4304 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF596626352CF0002F4304 /* libdracodec.a */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
