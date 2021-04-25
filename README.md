@@ -26,6 +26,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - iOS 12.0 and above
+- ⚠️ This library contains a prebuilt Draco library
 
 ## Installation
 
@@ -40,7 +41,7 @@ pod 'GLTFMac'
 
 ### TODO
 
-- [ ] Add draco support
+- [x] Add draco compressed mesh support
 - [ ] Write glTF 2.0 spec conformance table
 - [ ] Write unit test for standard glTF 2.0 assets
 - [ ] Load third-party libraries from git submodule
@@ -48,14 +49,14 @@ pod 'GLTFMac'
 - [ ] Write benchmarks for alternative glTF loaders
 - [ ] Add support for Model I/O
 
-### Contender for glTF loader
+### Contenders for glTF loader
 
 Here's some of the greatest libraries for loading/saving glTF assets written in C/C++.
 
-- [jkuhlmann/cgltf](https://github.com/)
-- [syoyo/tinygltf](https://github.com/)
-- [jessey-git/fx-gltf](https://github.com/)
-- [Microsoft/glTF-SDK](https://github.com/)
+- [jkuhlmann/cgltf](https://github.com/jkuhlmann/cgltf)
+- [syoyo/tinygltf](https://github.com/syoyo/tinygltf)
+- [jessey-git/fx-gltf](https://github.com/jessey-git/fx-gltf)
+- [Microsoft/glTF-SDK](https://github.com/Microsoft/glTF-SDK)
 
 ### Alternative libraries
 
@@ -67,7 +68,7 @@ There are some other cool run-out-of-box libraries that you should definitely ch
 - [SVRF/SvrfGLTFSceneKit](https://github.com/SVRF/SvrfGLTFSceneKit)
 - [3D4Medical/glTFSceneKit](https://github.com/3D4Medical/glTFSceneKit)
 
-## Assets
+### Assets
 
 - `DamagedHelmet.glb` by [theblueturtle_](https://sketchfab.com/theblueturtle_), CC BY-NC
 - `entrance_hall_1k_blurred.png` by [Sergej Majboroda](https://hdrihaven.com/hdri/?h=entrance_hall), CC0 Public Domain 
@@ -76,7 +77,8 @@ There are some other cool run-out-of-box libraries that you should definitely ch
 
 - [syoyo/tinygltf](https://github.com/syoyo/tinygltf) MIT License
 - [nothings/stb  stb_image.h](https://github.com/nothings/stb) Public Domain
-- [nlohmann/json](https://github.com/nlohmann/json)  MIT License
+- [nlohmann/json](https://github.com/nlohmann/json) MIT License
+- [google/draco](https://github.com/google/draco) Apache License 2.0
 - [warrenm/GLTFKit](https://github.com/warrenm/GLTFKit) ISC License
 - [toshiks/glTF-quicklook](https://github.com/toshiks/glTF-quicklook) MIT License
 
