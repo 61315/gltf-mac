@@ -1,5 +1,5 @@
 PODS:
-  - GLTFMac (0.1.0)
+  - GLTFMac (0.1.2)
 
 DEPENDENCIES:
   - GLTFMac (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GLTFMac: b8ca62c5e23897098ba4570104da07c158325eeb
+  GLTFMac: 4a616868582ce63093a52b55c4dfde06208615d3
 
 PODFILE CHECKSUM: 4ad6d6b7b8ac8dc5d36bf0b5fe7dcfa03abec168
 

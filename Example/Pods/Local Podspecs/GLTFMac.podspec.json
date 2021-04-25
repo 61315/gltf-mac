@@ -1,6 +1,6 @@
 {
   "name": "GLTFMac",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "summary": "A library for loading glTF 2.0 assets into iOS runtime.",
   "homepage": "https://github.com/61315/gltf-mac",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/61315/gltf-mac.git",
-    "tag": "0.1.0"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "12.0"
@@ -20,6 +20,11 @@
   "source_files": "GLTFMac/Classes/**/*",
   "private_header_files": "GLTFMac/Classes/Headers/**/*.{h,hpp}",
   "public_header_files": "GLTFMac/Classes/Source/**/*.{h,hpp}",
+  "vendored_libraries": "GLTFMac/Classes/Libraries/libdracodec.a",
+  "header_mappings_dir": "GLTFMac",
+  "pod_target_xcconfig": {
+    "HEADER_SEARCH_PATHS": "\"${PODS_ROOT}/../../GLTFMac/Classes/Headers\""
+  },
   "resources": "GLTFMac/NOTICES",
   "requires_arc": true
 }
