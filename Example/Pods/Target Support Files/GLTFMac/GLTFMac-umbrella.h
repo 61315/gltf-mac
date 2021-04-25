@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "GLTFSCNAnimationTargetPair.h"
-#import "TinyGLTFSCN.h"
+#import "Classes/Source/GLTFSCNAnimationTargetPair.h"
+#import "Classes/Source/TinyGLTFSCN.h"
 
 FOUNDATION_EXPORT double GLTFMacVersionNumber;
 FOUNDATION_EXPORT const unsigned char GLTFMacVersionString[];
