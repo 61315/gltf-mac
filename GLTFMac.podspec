@@ -9,12 +9,13 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '12.0'
 
-  s.source_files          = 'GLTFMac/Classes/**/*'
+  s.source_files          = 'GLTFMac/Classes/Headers/**/*', 'GLTFMac/Classes/Source/**/*'
   s.private_header_files  = 'GLTFMac/Classes/Headers/**/*.{h,hpp}'
   s.public_header_files   = 'GLTFMac/Classes/Source/**/*.{h,hpp}'
   s.vendored_libraries    = 'GLTFMac/Classes/Libraries/libdracodec.a'
   s.header_mappings_dir   = 'GLTFMac'
-  s.pod_target_xcconfig   = { "HEADER_SEARCH_PATHS" => '"${PODS_TARGET_SRCROOT}/GLTFMac/Classes/Headers"' }
+  s.pod_target_xcconfig   = { "HEADER_SEARCH_PATHS" => '"${PODS_TARGET_SRCROOT}/GLTFMac/Classes/Headers"',
+                              "ONLY_ACTIVE_ARCH"    => 'YES' }
   s.resource              = 'GLTFMac/NOTICES'
   
   s.requires_arc          = true
